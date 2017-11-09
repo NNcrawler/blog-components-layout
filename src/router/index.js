@@ -6,6 +6,7 @@ import DetailPost from '@/components/DetailPost';
 import Register from '@/components/Register';
 import Login from '@/components/Login';
 import PostArticle from '@/components/PostArticle';
+import EditArticle from '@/components/EditArticle';
 
 Vue.use(Router);
 
@@ -41,6 +42,12 @@ export default new Router({
           path: '/post-article',
           name: 'post-article',
           component: PostArticle,
+        },
+        {
+          path: '/edit-article/:id',
+          name: 'edit-article',
+          component: EditArticle,
+          props: true,
         },
       ],
     },

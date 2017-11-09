@@ -1,14 +1,23 @@
 <template lang="html">
-  <div class="col-8">
-    <!-- {{dateCreated}}
-    {{posting}} -->
-    <!-- {{userPostChecker}} -->
-    {{userPost}}
-    <h1>{{posting.title}}</h1>
-    <button @click="deletePost" v-if="userPost == posting.user" class="btn btn-link" type="button" name="button">Delete This Post</button>
-    <small>{{dateCreated}}</small>
-    <p>{{posting.content}}</p>
+  <div class="row">
+    <div class="col-12 col-md-8">
+      <!-- {{dateCreated}}
+      {{posting}} -->
+      <!-- {{userPostChecker}} -->
+      <!-- {{userPost}} -->
+      <h1>{{posting.title}}</h1>
+      <button @click="deletePost" v-if="userPost == posting.user" class="btn btn-link" type="button" name="button">Delete This Post</button>
+      <small>{{dateCreated}}</small>
+      <button v-if="userPost == posting.user" class="btn btn-link" type="button" name="button"><router-link :to="{ name: 'edit-article', params: { posting } }">Edit This Post</router-link></button>
+      <p>{{posting.content}}</p>
 
+    </div>
+    <div class="col-12 col-md-2 offset-md-1">
+      <img src="http://maxcdn.inspirationfeed.com/wp-content/uploads/2010/08/elegantbanners1.gif" alt="">
+    </div>
+    <div class="col-12 col-md-2 offset-md-1">
+      <img src="http://maxcdn.inspirationfeed.com/wp-content/uploads/2010/08/elegantbanners1.gif" alt="">
+    </div>
   </div>
 </template>
 
@@ -41,7 +50,6 @@ export default {
         // eslint-disable-next-line
         id: this.posting._id,
       };
-      alert(data.id);
       /* eslint-disable */
       this.$axios.delete('/post', { data })
         .then((value) => {
